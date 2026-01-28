@@ -24,7 +24,7 @@ const menuItems = [
     { icon: Settings, label: 'Settings', href: '/admin/settings' },
 ];
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ className, onClose }: { className?: string; onClose?: () => void }) {
     const pathname = usePathname();
     const router = useRouter();
 
@@ -34,7 +34,7 @@ export default function AdminSidebar() {
     };
 
     return (
-        <aside className="w-64 bg-slate-900 text-white h-screen fixed left-0 top-0 flex flex-col border-r border-slate-800 shadow-2xl z-50">
+        <aside className={twMerge("w-64 bg-slate-900 text-white h-screen fixed left-0 top-0 flex flex-col border-r border-slate-800 shadow-2xl z-50 transition-transform", className)}>
             <div className="p-8 pb-4">
                 <div className="flex items-center gap-3 mb-8">
                     <div className="w-12 h-12 rounded-2xl bg-white p-1 overflow-hidden shadow-lg border-2 border-blue-500/20">
@@ -45,6 +45,9 @@ export default function AdminSidebar() {
                         <p className="text-[10px] text-blue-400 font-black uppercase tracking-widest leading-none">Express</p>
                     </div>
                 </div>
+                <button onClick={onClose} className="md:hidden absolute right-4 top-4 p-2 rounded-lg bg-slate-800 text-slate-300">
+                    ✕
+                </button>
             </div>
 
             <nav className="flex-1 mt-6">
