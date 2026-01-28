@@ -1,0 +1,10 @@
+{
+  "id": "ADM-001",
+  "name": "Gloship",
+  "email": "gloshipper2@gmail.com",
+  "phone": "+1 (555) 000-0000",
+  "role": "Super Administrator",
+  "avatarUrl": "https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff",
+  "createdAt": "2026-01-27T03:41:30.000Z",
+  "password": "admin123"
+}

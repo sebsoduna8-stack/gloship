@@ -1,0 +1,196 @@
+[
+  {
+    "id": "GLS-849203",
+    "date": "2026-01-25T14:30:00.000Z",
+    "expectedDelivery": "2026-02-05",
+    "status": "On Hold",
+    "shipperName": "Alice Smith",
+    "shipperAddress": "123 Baker St, London, UK",
+    "shipperPhone": "+44 20 7946 0958",
+    "shipperEmail": "alice@example.com",
+    "receiverName": "Bob Johnson",
+    "receiverAddress": "456 5th Ave, New York, NY, USA",
+    "receiverPhone": "+1 212 555 1234",
+    "receiverEmail": "bob@example.com",
+    "shippingCost": 450,
+    "amountPaid": 450,
+    "paymentMethod": "Bank Transfer",
+    "pickupTime": "10:00",
+    "estimatedDuration": "10 days",
+    "notes": "Fragile items inside. Handle with extreme care.",
+    "items": [
+      {
+        "id": "item1",
+        "name": "Luxury Ceramics",
+        "weight": "5.5",
+        "quantity": 2
+      },
+      {
+        "id": "item2",
+        "name": "Art Supplies",
+        "weight": "2.1",
+        "quantity": 1
+      }
+    ],
+    "history": [
+      {
+        "id": "k7j16sn0m",
+        "status": "On Hold",
+        "timestamp": "2026-01-26T23:33:26.852Z",
+        "location": "Transit Point",
+        "notes": "Status updated to On Hold"
+      },
+      {
+        "id": "32q6slwc6",
+        "status": "Pending",
+        "timestamp": "2026-01-26T23:28:32.054Z",
+        "location": "Transit Point",
+        "notes": "Status updated to Pending"
+      },
+      {
+        "id": "log2",
+        "status": "In Transit",
+        "timestamp": "2026-01-26T09:00:00.000Z",
+        "location": "Heathrow Airport Logistics Hub",
+        "notes": "Shipment has departed the origin country facility."
+      },
+      {
+        "id": "log1",
+        "status": "Pending",
+        "timestamp": "2026-01-25T14:30:00.000Z",
+        "location": "London Sorting facility",
+        "notes": "Shipment picked up and processed at origin facility."
+      }
+    ]
+  },
+  {
+    "id": "GLS-112233",
+    "date": "2026-01-20T10:15:00.000Z",
+    "expectedDelivery": "2026-01-24",
+    "status": "Delivered",
+    "shipperName": "TechCorp Global",
+    "shipperAddress": "Suite 500, Silicon Valley, CA",
+    "shipperPhone": "+1 650 555 0199",
+    "shipperEmail": "logistics@techcorp.com",
+    "receiverName": "Marcus Aurelius",
+    "receiverAddress": "Via del Corso, Rome, Italy",
+    "receiverPhone": "+39 06 6992 1234",
+    "receiverEmail": "marcus@rome.it",
+    "shippingCost": 1200,
+    "amountPaid": 1200,
+    "paymentMethod": "PayPal",
+    "pickupTime": "15:00",
+    "estimatedDuration": "4 days",
+    "notes": "High value electronics.",
+    "items": [
+      {
+        "id": "item3",
+        "name": "Servers",
+        "weight": "45.0",
+        "quantity": 1
+      }
+    ],
+    "history": [
+      {
+        "id": "log3",
+        "status": "Delivered",
+        "timestamp": "2026-01-24T16:20:00.000Z",
+        "location": "Rome, Italy",
+        "notes": "Shipment delivered to personal address."
+      },
+      {
+        "id": "log22",
+        "status": "In Transit",
+        "timestamp": "2026-01-21T08:00:00.000Z",
+        "location": "Milan Gateway",
+        "notes": "Arrived at destination country gateway."
+      }
+    ]
+  },
+  {
+    "id": "GLS-609389",
+    "status": "Pending",
+    "expectedDelivery": "2026-02-19",
+    "shipperName": "e-djibril",
+    "shipperAddress": "foreke dschang",
+    "shipperPhone": "654290528",
+    "shipperEmail": "gloshhipper2@gmail.com",
+    "receiverName": "schoolboy",
+    "receiverAddress": "foto",
+    "receiverPhone": "623456767",
+    "receiverEmail": "efengohdjibril3@gmail.com",
+    "shippingCost": 4500,
+    "amountPaid": 4500,
+    "paymentMethod": "Bank Transfer",
+    "pickupTime": "05:04",
+    "estimatedDuration": "2 months",
+    "notes": "this shipment is from the state to dschang",
+    "items": [
+      {
+        "id": "ofhxx6ktq",
+        "name": "samsun tv",
+        "weight": "55kg",
+        "quantity": 2
+      },
+      {
+        "id": "4faxff8pd",
+        "name": "koki",
+        "weight": "2kg",
+        "quantity": 2
+      }
+    ],
+    "date": "2026-01-27T00:08:35.791Z",
+    "history": [
+      {
+        "id": "9i2n6an97",
+        "status": "Pending",
+        "timestamp": "2026-01-27T00:08:35.793Z",
+        "location": "Origin facility",
+        "notes": "Shipment created"
+      }
+    ]
+  },
+  {
+    "id": "GLS-220015",
+    "status": "Pending",
+    "expectedDelivery": "2026-03-17",
+    "shipperName": "frank paul",
+    "shipperAddress": "bamenda 1",
+    "shipperPhone": "1223456789",
+    "shipperEmail": "example@gmail.com",
+    "receiverName": "drick",
+    "receiverAddress": "buea",
+    "receiverPhone": "1234567",
+    "receiverEmail": "drick@gmail.com",
+    "shippingCost": 1000,
+    "amountPaid": 1000,
+    "paymentMethod": "Cash",
+    "pickupTime": "17:30",
+    "estimatedDuration": "3 months",
+    "notes": "this is an exportation from bameda to buea",
+    "items": [
+      {
+        "id": "t262xgbbj",
+        "name": "samsun tv",
+        "weight": "20kg",
+        "quantity": 2
+      },
+      {
+        "id": "luy7en662",
+        "name": "iphone 11",
+        "weight": "1kg",
+        "quantity": 1
+      }
+    ],
+    "date": "2026-01-27T00:34:46.085Z",
+    "history": [
+      {
+        "id": "ok5o2j6xp",
+        "status": "Pending",
+        "timestamp": "2026-01-27T00:34:46.086Z",
+        "location": "Origin facility",
+        "notes": "Shipment created"
+      }
+    ]
+  }
+]

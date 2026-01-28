@@ -1,0 +1,38 @@
+[
+    {
+        "id": "REC-849203",
+        "name": "Bob Johnson",
+        "email": "bob@example.com",
+        "phone": "+1 212 555 1234",
+        "address": "456 5th Ave, New York, NY, USA",
+        "totalShipments": 1,
+        "createdAt": "2026-01-25T14:30:00.000Z"
+    },
+    {
+        "id": "REC-112233",
+        "name": "Marcus Aurelius",
+        "email": "marcus@rome.it",
+        "phone": "+39 06 6992 1234",
+        "address": "Via del Corso, Rome, Italy",
+        "totalShipments": 1,
+        "createdAt": "2026-01-20T10:15:00.000Z"
+    },
+    {
+        "id": "REC-609389",
+        "name": "soduna sebasten",
+        "email": "sebastenchange@gmail.com",
+        "phone": "623456767",
+        "address": "foto",
+        "totalShipments": 1,
+        "createdAt": "2026-01-27T00:08:35.791Z"
+    },
+    {
+        "id": "REC-220015",
+        "name": "drick",
+        "email": "drick@gmail.com",
+        "phone": "1234567",
+        "address": "buea",
+        "totalShipments": 1,
+        "createdAt": "2026-01-27T00:34:46.085Z"
+    }
+]
