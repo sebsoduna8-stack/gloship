@@ -15,7 +15,7 @@ export default function AdminLayout({
                 <div className="font-black text-slate-900">Admin</div>
             </div>
             <div className={`fixed inset-0 bg-black/40 ${sidebarOpen ? 'block' : 'hidden'} md:hidden`} onClick={() => setSidebarOpen(false)} />
-            <AdminSidebar className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:flex hidden md:block`} onClose={() => setSidebarOpen(false)} />
+            <AdminSidebar className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`} onClose={() => setSidebarOpen(false)} />
             <main className="p-8 md:ml-64 ml-0">
                 {children}
             </main>
