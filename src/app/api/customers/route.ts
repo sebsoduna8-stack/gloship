@@ -7,14 +7,14 @@ export async function GET(request: NextRequest) {
     const id = searchParams.get('id');
 
     if (id) {
-        const customer = getCustomerById(id);
+        const customer = await getCustomerById(id);
         if (!customer) {
             return NextResponse.json({ error: 'Customer not found' }, { status: 404 });
         }
         return NextResponse.json(customer);
     }
 
-    const customers = getCustomers();
+    const customers = await getCustomers();
     return NextResponse.json(customers);
 }
 
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
             createdAt: new Date().toISOString(),
             totalShipments: 0
         };
-        addCustomer(newCustomer);
+        await addCustomer(newCustomer);
         return NextResponse.json(newCustomer, { status: 201 });
     } catch (error) {
         return NextResponse.json({ error: 'Failed to create customer' }, { status: 500 });
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
     try {
         const body = await request.json();
-        updateCustomer(body);
+        await updateCustomer(body);
         return NextResponse.json(body);
     } catch (error) {
         return NextResponse.json({ error: 'Failed to update customer' }, { status: 500 });
@@ -48,7 +48,7 @@ export async function DELETE(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     if (id) {
-        deleteCustomer(id);
+        await deleteCustomer(id);
         return NextResponse.json({ success: true });
     }
     return NextResponse.json({ error: 'ID required' }, { status: 400 });

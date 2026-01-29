@@ -4,7 +4,7 @@ import { getAdminProfile, saveAdminProfile } from '@/lib/db';
 
 export async function GET() {
     try {
-        const admin = getAdminProfile();
+        const admin = await getAdminProfile();
         // Don't send password to the client
         const { password, ...safeAdmin } = admin;
         return NextResponse.json(safeAdmin);
@@ -16,7 +16,7 @@ export async function GET() {
 export async function POST(request: Request) {
     try {
         const updates: Partial<AdminProfile> = await request.json();
-        const currentAdmin = getAdminProfile();
+        const currentAdmin = await getAdminProfile();
 
         const updatedAdmin = {
             ...currentAdmin,
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
         // If password is being updated, it's handled here for now
         // Usually, you'd want a separate endpoint for security
-        saveAdminProfile(updatedAdmin);
+        await saveAdminProfile(updatedAdmin);
 
         const { password, ...safeAdmin } = updatedAdmin;
         return NextResponse.json({ success: true, profile: safeAdmin });
