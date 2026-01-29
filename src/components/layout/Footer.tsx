@@ -98,14 +98,6 @@ export default function Footer() {
                     <div>
                         <h3 className="text-white font-bold mb-6 text-lg">Contact Us</h3>
                         <ul className="space-y-4">
-                            <li className="flex gap-3 items-start">
-                                <MapPin size={18} className="text-[var(--accent)] mt-1" />
-                                <span>
-                                    123 Logistics Avenue,<br />
-                                    Business District, NY 10001,<br />
-                                    United States
-                                </span>
-                            </li>
                             {/* <li className="flex gap-3 items-center">
                                 <Phone size={18} className="text-[var(--accent)]" />
                                 <span>+1 (845) 731-9773</span>

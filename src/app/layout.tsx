@@ -39,6 +39,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <script id="chatway" async={true} src="https://cdn.chatway.app/widget.js?id=xiaUgWXCm3dP"></script>
       </body>
     </html>
   );
