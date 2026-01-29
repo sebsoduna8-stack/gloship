@@ -24,6 +24,7 @@ export default function AdminLoginPage() {
             });
 
             if (res.ok) {
+                router.refresh();
                 router.push('/admin/dashboard');
             } else {
                 const data = await res.json();
