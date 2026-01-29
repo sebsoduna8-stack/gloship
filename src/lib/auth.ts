@@ -6,7 +6,7 @@ const JWT_SECRET = new TextEncoder().encode(
     process.env.JWT_SECRET || 'your-secret-key-change-this-in-production'
 );
 
-export async function createSession(payload: any) {
+export async function createSession(payload: Record<string, unknown>) {
     const token = await new SignJWT(payload)
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuedAt()

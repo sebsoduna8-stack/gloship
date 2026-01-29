@@ -37,7 +37,7 @@ export default function TestimonialsSection() {
                     {testimonials.map((item, index) => (
                         <div key={index} className="bg-[#1a1a1a] p-8 rounded-lg border border-[#222] hover:border-[var(--accent)] transition-colors">
                             <Quote size={40} className="text-[var(--accent)] mb-6 opacity-50" />
-                            <p className="text-gray-300 mb-6 leading-relaxed italic">"{item.quote}"</p>
+                            <p className="text-gray-300 mb-6 leading-relaxed italic">&quot;{item.quote}&quot;</p>
                             <div>
                                 <h4 className="text-white font-bold font-[var(--font-montserrat)]">{item.name}</h4>
                                 <span className="text-gray-500 text-sm">{item.company}</span>

@@ -183,7 +183,7 @@ export default function ShipmentListPage() {
                                     <th className="px-6 py-4">Receiver</th>
                                     <th className="px-6 py-4">Status</th>
                                     <th className="px-6 py-4">Payment</th>
-                                    <th className="px-6 py-4 text-right">Actions</th>
+                                    <th className="px-6 py-4 text-right sticky right-0 bg-slate-50 z-10 shadow-[-5px_0_10px_-5px_rgba(0,0,0,0.1)]">Actions</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100 italic">
@@ -227,8 +227,8 @@ export default function ShipmentListPage() {
                                                 {shipment.amountPaid >= shipment.shippingCost ? 'PAID' : 'PARTIAL'}
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 text-right">
-                                            <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <td className="px-6 py-4 text-right sticky right-0 bg-white z-10 shadow-[-5px_0_10px_-5px_rgba(0,0,0,0.1)] group-hover:bg-slate-50">
+                                            <div className="flex justify-end gap-2">
                                                 <button
                                                     onClick={() => generateInvoice(shipment)}
                                                     className="p-2 hover:bg-blue-50 text-blue-600 rounded-lg"

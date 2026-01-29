@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
     User,
     Mail,
@@ -22,6 +22,15 @@ export default function AdminProfilePage() {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+    
+    // Password state
+    const [passwordData, setPasswordData] = useState({
+        current: '',
+        new: '',
+        confirm: ''
+    });
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         fetchProfile();
@@ -39,22 +48,60 @@ export default function AdminProfilePage() {
         }
     };
 
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        // Limit size to 2MB
+        if (file.size > 2 * 1024 * 1024) {
+            setMessage({ type: 'error', text: 'Image size should be less than 2MB' });
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            if (profile && typeof reader.result === 'string') {
+                setProfile({ ...profile, avatarUrl: reader.result });
+            }
+        };
+        reader.readAsDataURL(file);
+    };
+
     const handleUpdateProfile = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!profile) return;
+
+        // Password validation
+        if (passwordData.new) {
+            if (passwordData.new.length < 8) {
+                setMessage({ type: 'error', text: 'New password must be at least 8 characters' });
+                return;
+            }
+            if (passwordData.new !== passwordData.confirm) {
+                setMessage({ type: 'error', text: 'New passwords do not match' });
+                return;
+            }
+        }
 
         setSaving(true);
         setMessage(null);
 
         try {
+            const updateData: any = { ...profile };
+            if (passwordData.new) {
+                updateData.password = passwordData.new;
+            }
+
             const res = await fetch('/api/admin/profile', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(profile)
+                body: JSON.stringify(updateData)
             });
 
             if (res.ok) {
                 setMessage({ type: 'success', text: 'Profile updated successfully!' });
+                // Clear password fields on success
+                setPasswordData({ current: '', new: '', confirm: '' });
                 setTimeout(() => setMessage(null), 3000);
             } else {
                 const data = await res.json();
@@ -117,11 +164,22 @@ export default function AdminProfilePage() {
                                 <img
                                     src={profile.avatarUrl}
                                     alt={profile.name}
-                                    className="w-32 h-32 rounded-full border-4 border-white shadow-xl bg-white"
+                                    className="w-32 h-32 rounded-full border-4 border-white shadow-xl bg-white object-cover"
                                 />
-                                <button className="absolute bottom-0 right-0 p-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors border-2 border-white">
+                                <button 
+                                    type="button"
+                                    onClick={() => fileInputRef.current?.click()}
+                                    className="absolute bottom-0 right-0 p-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors border-2 border-white"
+                                >
                                     <Camera size={16} />
                                 </button>
+                                <input 
+                                    type="file" 
+                                    ref={fileInputRef}
+                                    onChange={handleImageUpload}
+                                    className="hidden" 
+                                    accept="image/*"
+                                />
                             </div>
                             <h2 className="mt-4 text-xl font-bold text-slate-900">{profile.name}</h2>
                             <p className="text-sm font-bold text-blue-600 bg-blue-50 inline-block px-3 py-1 rounded-full mt-1 border border-blue-100">
@@ -231,6 +289,8 @@ export default function AdminProfilePage() {
                                     <label className="text-xs text-slate-500 uppercase tracking-widest px-1">Current Password</label>
                                     <input
                                         type="password"
+                                        value={passwordData.current}
+                                        onChange={(e) => setPasswordData({ ...passwordData, current: e.target.value })}
                                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm font-bold"
                                         placeholder="••••••••"
                                     />
@@ -240,6 +300,8 @@ export default function AdminProfilePage() {
                                     <label className="text-xs text-slate-500 uppercase tracking-widest px-1">New Password</label>
                                     <input
                                         type="password"
+                                        value={passwordData.new}
+                                        onChange={(e) => setPasswordData({ ...passwordData, new: e.target.value })}
                                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm font-bold"
                                         placeholder="Min. 8 characters"
                                     />
@@ -248,6 +310,8 @@ export default function AdminProfilePage() {
                                     <label className="text-xs text-slate-500 uppercase tracking-widest px-1">Confirm New Password</label>
                                     <input
                                         type="password"
+                                        value={passwordData.confirm}
+                                        onChange={(e) => setPasswordData({ ...passwordData, confirm: e.target.value })}
                                         className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm font-bold"
                                         placeholder="Repeat new password"
                                     />

@@ -54,7 +54,7 @@ function readInitialData<T>(filePath: string, defaultValue: T): T {
     return defaultValue;
 }
 
-function persistData(filePath: string, data: any) {
+function persistData(filePath: string, data: unknown) {
     try {
         ensureDirectoryExists(filePath);
         fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
@@ -62,7 +62,7 @@ function persistData(filePath: string, data: any) {
         // In production (Vercel/Lambda), the filesystem is read-only (EROFS).
         // We catch this error so the app doesn't crash, effectively falling back
         // to in-memory storage for the duration of the instance's life.
-        console.warn(`[DB] Could not persist data to disk (Read-Only Filesystem detected). Data will be held in memory.`);
+        console.warn(`[DB] Could not persist data to disk. Data will be held in memory. Error: ${error instanceof Error ? error.message : String(error)}`);
     }
 }
 

@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
 import PageHeader from "@/components/ui/PageHeader";
 import TrackingForm from "@/components/ui/TrackingForm";
-import { CheckCircle, Truck, Package, MapPin, Loader2, AlertTriangle, Clock, Calendar } from "lucide-react";
+import { Search, Package, ArrowRight, Truck, Calendar, MapPin as MapPinIcon, Loader2, AlertTriangle, Clock } from "lucide-react";
 import { Shipment } from "@/types/shipment";
 
 function TrackingContent() {

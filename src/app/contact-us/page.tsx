@@ -19,7 +19,7 @@ export default function ContactPage() {
                         <div>
                             <span className="text-[var(--accent)] font-bold tracking-wider uppercase text-sm mb-2 block">Contact Info</span>
                             <h2 className="text-3xl font-bold text-white mb-6 font-[var(--font-montserrat)]">
-                                We'd Love to Hear From You
+                                We&apos;re here to help!
                             </h2>
                             <p className="text-gray-400 leading-relaxed">
                                 Have questions about our services or need a custom quote? 

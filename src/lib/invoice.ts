@@ -66,7 +66,7 @@ export const generateInvoice = (shipment: Shipment) => {
     });
 
     // SECTION: FINANCIALS & LOGISTICS
-    const finalY = (doc as any).lastAutoTable.finalY + 15;
+    const finalY = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 15;
 
     // Payment Box
     doc.setFillColor(248, 250, 252); // slate-50
