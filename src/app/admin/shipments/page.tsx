@@ -20,7 +20,10 @@ import Link from 'next/link';
 import { Shipment } from '@/types/shipment';
 import { generateInvoice } from '@/lib/invoice';
 
+import { useRouter } from 'next/navigation';
+
 export default function ShipmentListPage() {
+    const router = useRouter();
     const [shipments, setShipments] = useState<Shipment[]>([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
@@ -185,7 +188,15 @@ export default function ShipmentListPage() {
                             </thead>
                             <tbody className="divide-y divide-slate-100 italic">
                                 {filteredShipments.map((shipment) => (
-                                    <tr key={shipment.id} className="text-sm hover:bg-slate-50 transition-all group font-bold">
+                                    <tr 
+                                        key={shipment.id} 
+                                        className="text-sm hover:bg-slate-50 transition-all group font-bold cursor-pointer"
+                                        onClick={(e) => {
+                                            // Prevent navigation when clicking actions
+                                            if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).closest('a')) return;
+                                            router.push(`/admin/shipments/${shipment.id}/edit`);
+                                        }}
+                                    >
                                         <td className="px-6 py-4">
                                             <div className="font-mono font-bold text-blue-600">{shipment.id}</div>
                                             <div className="text-[10px] text-slate-400 mt-0.5">

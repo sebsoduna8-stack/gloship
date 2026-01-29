@@ -13,8 +13,10 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { Shipment } from '@/types/shipment';
+import { useRouter } from 'next/navigation';
 
 export default function AdminDashboardPage() {
+    const router = useRouter();
     const [shipments, setShipments] = useState<Shipment[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -111,7 +113,11 @@ export default function AdminDashboardPage() {
                                         <td colSpan={4} className="px-6 py-20 text-center text-slate-400 font-bold">No shipments found</td>
                                     </tr>
                                 ) : recentShipments.map((s) => (
-                                    <tr key={s.id} className="text-sm hover:bg-slate-50 transition-colors group">
+                                    <tr 
+                                        key={s.id} 
+                                        className="text-sm hover:bg-slate-50 transition-colors group cursor-pointer"
+                                        onClick={() => router.push(`/admin/shipments/${s.id}/edit`)}
+                                    >
                                         <td className="px-6 py-4 font-mono font-black text-blue-600 transition-transform group-hover:translate-x-1">{s.id}</td>
                                         <td className="px-6 py-4 text-slate-700 font-bold">{s.receiverName}</td>
                                         <td className="px-6 py-4">
