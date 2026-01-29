@@ -34,7 +34,7 @@ export default function AdminSidebar({ className, onClose }: { className?: strin
     };
 
     return (
-        <aside className={twMerge("w-64 bg-slate-900 text-white h-screen fixed left-0 top-0 flex flex-col border-r border-slate-800 shadow-2xl z-50 transition-transform", className)}>
+        <aside className={twMerge("w-64 bg-slate-900 text-white h-screen fixed left-0 top-0 flex flex-col border-r border-slate-800 shadow-2xl z-50 transition-transform overflow-y-auto", className)}>
             <div className="p-8 pb-4">
                 <div className="flex items-center gap-3 mb-8">
                     <div className="w-12 h-12 rounded-2xl bg-white p-1 overflow-hidden shadow-lg border-2 border-blue-500/20">

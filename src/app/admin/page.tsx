@@ -24,8 +24,8 @@ export default function AdminLoginPage() {
             });
 
             if (res.ok) {
-                router.refresh();
-                router.push('/admin/dashboard');
+                // Force a hard navigation to ensure cookies are sent and middleware runs
+                window.location.href = '/admin/dashboard';
             } else {
                 const data = await res.json();
                 setError(data.error || 'Invalid email or password');
