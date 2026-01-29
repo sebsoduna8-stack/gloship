@@ -33,7 +33,8 @@ export async function POST(request: Request) {
 
         const { password, ...safeAdmin } = updatedAdmin;
         return NextResponse.json({ success: true, profile: safeAdmin });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to update profile' }, { status: 500 });
+    } catch (error: any) {
+        console.error('Profile update error:', error);
+        return NextResponse.json({ error: `Failed to update profile: ${error.message}` }, { status: 500 });
     }
 }

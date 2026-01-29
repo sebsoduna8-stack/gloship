@@ -57,10 +57,11 @@ export default function AdminProfilePage() {
                 setMessage({ type: 'success', text: 'Profile updated successfully!' });
                 setTimeout(() => setMessage(null), 3000);
             } else {
-                throw new Error('Update failed');
+                const data = await res.json();
+                throw new Error(data.error || 'Update failed');
             }
-        } catch (error) {
-            setMessage({ type: 'error', text: 'Failed to update profile.' });
+        } catch (error: any) {
+            setMessage({ type: 'error', text: error.message || 'Failed to update profile.' });
         } finally {
             setSaving(false);
         }

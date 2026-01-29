@@ -34,8 +34,9 @@ export async function POST(request: NextRequest) {
         };
         addShipment(newShipment);
         return NextResponse.json(newShipment, { status: 201 });
-    } catch (error) {
-        return NextResponse.json({ error: 'Failed to create shipment' }, { status: 500 });
+    } catch (error: any) {
+        console.error('Error creating shipment:', error);
+        return NextResponse.json({ error: `Failed to create shipment: ${error.message}` }, { status: 500 });
     }
 }
 
