@@ -30,6 +30,8 @@ export async function POST(request: Request) {
         const balanceStatus = balance > 0 ? 'UNPAID' : 'PAID';
         const balanceColor = balance > 0 ? '#ef4444' : '#22c55e'; // Red or Green
 
+        const origin = request.headers.get('origin') || 'https://www.globalshippers.com';
+
         // Premium Invoice Email Template
         const emailHtml = `
             <!DOCTYPE html>

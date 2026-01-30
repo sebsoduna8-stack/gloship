@@ -26,6 +26,8 @@ export async function POST(request: Request) {
             }, { status: 500 });
         }
 
+        const origin = request.headers.get('origin') || 'https://www.globalshippers.com';
+
         // Premium Professional Email Template
         const emailHtml = `
             <!DOCTYPE html>
