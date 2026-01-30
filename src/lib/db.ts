@@ -260,8 +260,8 @@ export async function getAdminProfile(): Promise<AdminProfile> {
 
     const defaultAdmin: AdminProfile = {
         id: 'ADM-001',
-        name: 'Main Admin',
-        email: 'admin@gloship.online',
+        name: 'Gloship',
+        email: 'gloshipper2@gmail.com',
         phone: '+1 (555) 000-0000',
         role: 'Super Administrator',
         avatarUrl: 'https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff',
