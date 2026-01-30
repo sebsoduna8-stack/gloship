@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GloShip Clone
+
+This is a logistics and shipping management application built with Next.js 15, Tailwind CSS, and GitHub-based persistence.
 
 ## Getting Started
 
-First, run the development server:
+1.  **Clone the repository**
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Configuration
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project requires environment variables for email functionality and data persistence in serverless environments (like Vercel).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Email Configuration (Required for Emails)
+To send shipment confirmations and invoices, you must configure a Gmail account.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  Go to your [Google Account Security Settings](https://myaccount.google.com/security).
+2.  Enable **2-Step Verification**.
+3.  Go to **App Passwords** (search for it in the settings if you can't find it).
+4.  Create a new App Password for "Mail" and "Other (Custom name)".
+5.  Copy the generated 16-character password.
 
-## Learn More
+**Environment Variables:**
+- `EMAIL_USER`: Your full Gmail address (e.g., `gloship.logistics@gmail.com`).
+- `EMAIL_PASS`: The 16-character App Password you generated (not your login password).
 
-To learn more about Next.js, take a look at the following resources:
+### 2. GitHub Persistence (Required for Vercel Deployment)
+Since Vercel has a read-only file system, we use the GitHub API to save data (shipments, customers, etc.) directly to the repository.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  Go to [GitHub Developer Settings > Personal Access Tokens > Tokens (classic)](https://github.com/settings/tokens).
+2.  Generate a new token.
+3.  Select the **repo** scope (Full control of private repositories).
+4.  Copy the token.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Environment Variables:**
+- `GITHUB_TOKEN`: Your GitHub Personal Access Token.
 
-## Deploy on Vercel
+## Deploying to Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1.  Push your code to a GitHub repository.
+2.  Import the project into Vercel.
+3.  In the **Environment Variables** section of the deployment settings, add:
+    - `EMAIL_USER`
+    - `EMAIL_PASS`
+    - `GITHUB_TOKEN`
+4.  Deploy!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Admin Credentials
+Default admin credentials are stored in `src/data/admin.json`.
