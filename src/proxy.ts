@@ -7,7 +7,7 @@ const JWT_SECRET = new TextEncoder().encode(
     process.env.JWT_SECRET || 'your-secret-key-change-this-in-production'
 );
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     // 1. Check if the path is an admin path
     if (request.nextUrl.pathname.startsWith('/admin')) {
         
