@@ -104,7 +104,7 @@ export async function POST(request: Request) {
                             </div>
                         </div>
 
-                        <a href="https://www.globalshippers.com/track?id=${shipment.id}" class="cta-button">View Shipment & Pay</a>
+                        <a href="${origin}/track?id=${shipment.id}" class="cta-button">View Shipment & Pay</a>
                         
                         <p style="margin-top: 32px; font-size: 13px; color: #64748b; text-align: center;">
                             Status: <strong style="color: ${balanceColor};">${balanceStatus}</strong> • Payment Method: <strong>${shipment.paymentMethod}</strong>

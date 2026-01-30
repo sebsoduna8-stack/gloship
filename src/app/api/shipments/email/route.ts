@@ -83,7 +83,7 @@ export async function POST(request: Request) {
                             <div class="detail-value" style="font-size: 18px;">${new Date(shipment.expectedDelivery).toLocaleDateString(undefined, { dateStyle: 'full' })}</div>
                         </div>
                         
-                        <a href="https://www.globalshippers.com/track?id=${shipment.id}" class="cta-button">Track Your Shipment Live</a>
+                        <a href="${origin}/track?id=${shipment.id}" class="cta-button">Track Your Shipment Live</a>
                         
                         <div class="divider"></div>
                         
