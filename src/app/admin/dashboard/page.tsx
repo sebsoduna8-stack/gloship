@@ -19,8 +19,10 @@ export default function AdminDashboardPage() {
     const router = useRouter();
     const [shipments, setShipments] = useState<Shipment[]>([]);
     const [loading, setLoading] = useState(true);
+    const [dbStatus, setDbStatus] = useState<{ status: string; message: string; mode: string } | null>(null);
 
     useEffect(() => {
+        // Fetch Shipments
         fetch('/api/shipments')
             .then(res => res.json())
             .then(data => {
@@ -31,6 +33,11 @@ export default function AdminDashboardPage() {
                 console.error(err);
                 setLoading(false);
             });
+
+        // Check DB Status
+        fetch('/api/admin/status')
+            .then(res => res.json())
+            .then(data => setDbStatus(data));
     }, []);
 
     const stats = [
@@ -63,6 +70,23 @@ export default function AdminDashboardPage() {
             <div>
                 <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
                 <p className="text-slate-500 mt-2">Welcome back, Admin. Here's what's happening today.</p>
+                
+                {dbStatus && dbStatus.status !== 'success' && (
+                    <div className={`mt-4 p-4 rounded-lg border ${
+                        dbStatus.status === 'error' ? 'bg-red-50 border-red-200 text-red-700' : 'bg-amber-50 border-amber-200 text-amber-700'
+                    }`}>
+                        <div className="flex items-center gap-2 font-bold">
+                            <AlertCircle size={20} />
+                            Storage Alert: {dbStatus.mode === 'local' ? 'Data will NOT persist!' : 'Connection Issue'}
+                        </div>
+                        <p className="text-sm mt-1">{dbStatus.message}</p>
+                        {dbStatus.mode === 'local' && (
+                            <p className="text-xs mt-2 font-mono bg-white/50 p-2 rounded">
+                                Missing GITHUB_TOKEN in Vercel. Please add it to Settings &gt; Environment Variables.
+                            </p>
+                        )}
+                    </div>
+                )}
             </div>
 
             {/* Stats Grid */}
